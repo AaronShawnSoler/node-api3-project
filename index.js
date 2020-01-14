@@ -9,5 +9,9 @@ server.use(express.json());
 server.use('/api/users', userRoutes);
 server.use('/api/posts', postRoutes);
 
+server.use(function(req, res) {
+    res.status(404).send(`No such directory`);
+});
+
 const port = 8000;
 server.listen(port, () => console.log(`Listening on port ${port}`));
