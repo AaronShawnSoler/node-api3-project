@@ -20,5 +20,5 @@ server.use(function(req, res) {
     res.status(404).send(`No such directory`);
 });
 
-const port = 8000;
+const port = process.env.PORT;
 server.listen(port, () => console.log(`Listening on port ${port}`));
