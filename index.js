@@ -6,6 +6,13 @@ const postRoutes = require('./posts/postRouter');
 const server = express();
 server.use(express.json());
 
+function logger(req, res, next) {
+    console.log(`[${new Date().toString()}] METHOD: ${req.method} | URL: ${req.url}`);
+    next();
+}
+
+server.use(logger);
+
 server.use('/api/users', userRoutes);
 server.use('/api/posts', postRoutes);
 
